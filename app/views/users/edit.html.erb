@@ -1,0 +1,40 @@
+<div class="container">
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
+      <% if @user.errors.any? %>
+       <h2><%= @user.errors.count %>error prohibited this obj from being saved</h2>
+       <ul>
+        <% @user.errors.full_messages.each do |message| %>
+         <li> <%= message %> </li>
+         <% end %>
+        </ul>
+      <% end %>
+<h2>User info</h2>
+<%= form_for (@user) do |f| %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+  </div>
+
+  <div class="field">
+  <%= f.label :image %>
+  <%= f.attachment_field :profile_image, placeholder: "プロフィール画面" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :introduction %>
+    <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction" %>
+  </div>
+
+
+  <div class="field">
+  <%= f.submit "Update User" %>
+  </div>
+<% end %>
+
+</div>
+<div class="col-md-3"></div>
+
+</div>
+</div>
